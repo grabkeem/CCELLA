@@ -63,11 +63,11 @@ JSON files for each of the model definition, model config, and environment confi
 ### 4. Synthetic Data Generation
 To generate synthetic images (e.g. for use in a downstream classifier task):
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun \
+CUDA_VISIBLE_DEVICES=0,1 torchrun \
   --nproc_per_node=4 \
   --nnodes=1 \
   --master_addr=localhost --master_port=1234 \
-  -m scripts.synthetic_datagen --model_def ./configs/CCELLA_def.json --model_config ./configs/CCELLA_config.json --env_config ./configs/CCELLA_env.json --num_gpus 4 --
+  -m scripts.synthetic_datagen --model_def ./configs/CCELLA_def.json --model_config ./configs/CCELLA_config.json --env_config ./configs/CCELLA_env.json --num_gpus 2
 ```
 
 Alongside generating the images, the scripts will generate multiple Excel sheets per GPU and per each of train and test splits, in the form "{output_dir}/synthsheet_{local_rank}_{train/test}.xlsx". These need to be merged manually into a single spreadsheet at "{output_dir}/synthsheet_all.xlsx"
@@ -75,7 +75,7 @@ Alongside generating the images, the scripts will generate multiple Excel sheets
 ### 5. Downstream Classifier
 Downstream EfficientNet classifiers can be trained and evaluated with the following commands:
 ```
-export NUM_GPUS_PER_NODE=4
+export NUM_GPUS_PER_NODE=2
 torchrun \
     --nproc_per_node=${NUM_GPUS_PER_NODE} \
     --nnodes=1 \
