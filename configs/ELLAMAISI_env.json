@@ -1,0 +1,16 @@
+{
+    "data_base_dir": "[path to data]/coreg_diffusion_new",
+    "embedding_base_dir": "[path to data]/coreg_diffusion_new_emb",
+    "tfevent_path": "./outputs/tfevent",
+    "imkey": "axt2",
+    "exp_name": "ELLAMAISI",
+    "train_json": "./datasets/train_merged.json",
+    "test_json": "./datasets/test_merged.json",
+    "model_dir": "./models",
+    "model_filename": "ELLAMAISI.pt",
+    "output_dir": "./diffusion_outputs/ELLAMAISI",
+    "output_prefix": "unet_3d",
+    "trained_autoencoder_path": "./models/model_maisi_autoencoder_epoch273_alternative.pt",
+    "existing_ckpt_filepath": null
+    
+}
